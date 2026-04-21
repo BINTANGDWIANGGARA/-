@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Optimization -->
+    <title>Bintang Dwi Anggara — Software Developer & Digital Marketing</title>
+    <meta name="description" content="Portfolio Bintang Dwi Anggara. Software Developer dengan fokus pada pengembangan sistem berbasis web (Laravel, PHP), analisis data, dan strategi digital marketing.">
+    <meta name="keywords" content="Software Developer, Web Developer, Programmer, Bintang Dwi Anggara, Laravel, PHP, Digital Marketing, Data Analysis, Jakarta">
+    <meta name="author" content="Bintang Dwi Anggara">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Bintang Dwi Anggara — Software Developer & Digital Marketing">
+    <meta property="og:description" content="Membangun solusi sistem berbasis web yang efisien, terstruktur, dan berdampak nyata bagi bisnis Anda.">
+    <meta property="og:image" content="profile.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://images.unsplash.com">
+    
+    <!-- Tailwind CSS Config for Dark Mode -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        darkBg: '#050505',
+                        darkCard: '#0a0a0a',
+                    },
+                    animation: {
+                        'float-slow': 'float 8s infinite ease-in-out alternate',
+                        'float-fast': 'float 5s infinite ease-in-out alternate-reverse',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+        
+        body { 
+            cursor: none;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f3f4f6; }
+        .dark ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #a855f7; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
+
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+        }
+        .cursor-dot {
+            width: 8px; height: 8px;
+            background-color: #a855f7;
+            box-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7;
+        }
+        .cursor-outline {
+            width: 40px; height: 40px;
+            border: 2px solid rgba(168, 85, 247, 0.6);
+            transition: width 0.2s, height 0.2s, background-color 0.2s;
+        }
+
+        /* Utilities */
+        .gradient-text {
+            background: linear-gradient(90deg, #a855f7, #6b21a8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bp-glow { box-shadow: 0 0 20px rgba(168, 85, 247, 0.4); }
+        .bp-glow-hover:hover {
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+            border-color: #a855f7;
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark .glass-card {
+            background: rgba(17, 17, 17, 0.7);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(168, 85, 247, 0.15);
+        }
+        .dark .glass-card:hover {
+            border-color: rgba(168, 85, 247, 0.8);
+            box-shadow: 0 20px 40px -10px rgba(126, 34, 206, 0.4);
+        }
+
+        /* Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+        }
+        .orb-1 { width: 300px; height: 300px; background: rgba(168, 85, 247, 0.2); top: -100px; left: -100px; }
+        .orb-2 { width: 400px; height: 400px; background: rgba(147, 51, 234, 0.15); bottom: -150px; right: -100px; }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-30px) scale(1.1); }
+        }
+
+        /* 3D Tilt Element */
+        .tilt-element {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .tilt-container:hover .tilt-element {
+            transform: rotateY(8deg) rotateX(4deg) scale(1.02);
+        }
+
+        /* Hide cursor on touch */
+        @media (hover: none) and (pointer: coarse) {
+            body { cursor: auto; }
+            .cursor-dot, .cursor-outline { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 dark:bg-darkBg dark:text-[#e5e5e5] antialiased selection:bg-purple-500 selection:text-white">
+
+    <!-- Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="fixed w-full z-50 bg-white/80 dark:bg-[#050505]/80 backdrop-blur-md border-b border-gray-200 dark:border-purple-900/30 transition-all duration-300">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-20">
+                    <div class="flex-shrink-0" data-aos="fade-down">
+                        <a href="#" aria-label="Beranda" class="font-bold text-2xl tracking-tight text-gray-900 dark:text-white">Bintang<span class="text-purple-600 dark:text-purple-500 animate-pulse">.</span></a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-8" data-aos="fade-down" data-aos-delay="100">
+                        <a href="#hero" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition font-medium text-sm tracking-wide">Beranda</a>
+                        <a href="#tentang" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition font-medium text-sm tracking-wide">Tentang</a>
+                        <a href="#keahlian" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition font-medium text-sm tracking-wide">Keahlian</a>
+                        <a href="#proyek" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition font-medium text-sm tracking-wide">Proyek</a>
+                        <a href="#testimoni" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition font-medium text-sm tracking-wide">Klien</a>
+                        <a href="#kontak" class="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition font-medium text-sm tracking-wide">Kontak</a>
+                        
+                        <!-- Dark Mode Toggle -->
+                        <button id="theme-toggle" class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-600 dark:text-yellow-400 hover:bg-purple-100 dark:hover:bg-gray-700 transition shadow-inner" aria-label="Toggle Dark Mode">
+                            <i class="fas fa-moon dark:hidden text-purple-600"></i>
+                            <i class="fas fa-sun hidden dark:block"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="pt-36 pb-20 md:pt-40 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto flex flex-col items-center text-center relative min-h-screen justify-center">
+            <div class="orb orb-1 animate-float-slow"></div>
+            <div class="orb orb-2 animate-float-fast"></div>
+            
+            <!-- Grid Background Pattern -->
+            <div class="absolute inset-0 opacity-[0.03] dark:opacity-10 z-[-1]" style="background-image: radial-gradient(rgba(168, 85, 247, 0.8) 1px, transparent 1px); background-size: 40px 40px;"></div>
+            
+            <!-- Profile Image -->
+            <div class="tilt-container mb-8 relative group" data-aos="zoom-in" data-aos-duration="1000">
+                <div class="absolute -inset-2 bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 rounded-full blur-xl opacity-40 group-hover:opacity-75 transition duration-500 animate-pulse"></div>
+                <div class="relative w-40 h-40 md:w-52 md:h-52 rounded-full p-1 bg-gradient-to-tr from-purple-500 to-indigo-500 shadow-2xl tilt-element">
+                    <!-- Added fetchpriority for LCP optimization -->
+                    <img src="Picture/profil.png" alt="Foto Bintang Dwi Anggara" fetchpriority="high" class="w-full h-full rounded-full object-cover border-4 border-white dark:border-[#050505] bg-gray-200 dark:bg-gray-800" onerror="this.src='https://ui-avatars.com/api/?name=Bintang+Anggara&background=a855f7&color=fff&size=256'">
+                </div>
+            </div>
+
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200">
+                Software Developer, <br class="hidden md:block">
+                Data & <span class="gradient-text drop-shadow-md dark:drop-shadow-[0_0_15px_rgba(168,85,247,0.5)]">Digital Marketing</span>.
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mb-10 leading-relaxed" data-aos="fade-up" data-aos-delay="300">
+                Saya Bintang Dwi Anggara. Saya tidak sekadar menulis kode, saya mengubah kebutuhan bisnis Anda menjadi sistem operasional yang efisien, terstruktur, dan berbasis data.
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
+                <a href="#kontak" aria-label="Mulai Kolaborasi" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-10 rounded-full bp-glow transition transform hover:-translate-y-1 hover:scale-105 shadow-lg flex items-center gap-2">
+                    Mulai Kolaborasi <i class="fas fa-rocket"></i>
+                </a>
+                <a href="#proyek" aria-label="Eksplorasi Proyek" class="bg-white dark:bg-transparent hover:bg-gray-50 dark:hover:bg-[#111] text-gray-900 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:border-purple-500 dark:hover:border-purple-500 font-bold py-4 px-10 rounded-full transition transform hover:-translate-y-1 hover:text-purple-600 dark:hover:text-purple-400 shadow-sm flex items-center gap-2">
+                    Eksplorasi Proyek <i class="fas fa-arrow-down"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Tentang Saya -->
+        <section id="tentang" class="py-24 bg-white dark:bg-darkCard relative border-t border-gray-100 dark:border-purple-900/20 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row gap-16 items-center">
+                    <!-- Image Card -->
+                    <div class="w-full md:w-5/12" data-aos="fade-right">
+                        <div class="relative group h-full tilt-container">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl blur opacity-20 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+                            <div class="relative glass-card rounded-2xl p-3 h-full flex flex-col tilt-element bg-white dark:bg-[#111]">
+                                <div class="overflow-hidden rounded-xl relative">
+                                    <img src="Picture/coding.webp" alt="Potret Bintang Dwi Anggara" loading="lazy" class="w-full h-[450px] object-cover object-top filter grayscale-[30%] group-hover:grayscale-0 transition duration-700 transform group-hover:scale-105" onerror="this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-70 group-hover:opacity-50 transition-opacity"></div>
+                                    <div class="absolute bottom-6 left-6 right-6">
+                                        <h3 class="text-2xl font-bold text-white mb-1 drop-shadow-md">Bintang Dwi Anggara</h3>
+                                        <p class="text-purple-300 font-medium drop-shadow-md">SMKN 1 Jakarta • Rekayasa Perangkat Lunak</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Text Content -->
+                    <div class="w-full md:w-7/12" data-aos="fade-left">
+                        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">Filosofi <span class="text-purple-600 dark:text-purple-500">Kerja</span></h2>
+                        <div class="space-y-6 text-gray-600 dark:text-gray-400 leading-relaxed text-lg">
+                            <p>
+                                Latar belakang saya dalam Rekayasa Perangkat Lunak memungkinkan saya membangun sistem dengan fondasi kode yang kuat. Melalui pengalaman langsung di dunia kerja, saya terbiasa mengembangkan sistem operasional nyata yang dipakai perusahaan setiap hari.
+                            </p>
+                            <p>
+                                Saya meyakini pendekatan yang terstruktur: memahami alur bisnis klien secara utuh sebelum menulis satu baris kode pun. Selain teknis, pemahaman saya terhadap analisis data dan strategi marketplace menjadikan solusi yang saya tawarkan lebih komprehensif.
+                            </p>
+                            <div class="border-l-4 border-purple-500 pl-6 py-4 mt-8 bg-purple-50 dark:bg-purple-900/10 rounded-r-xl transition-colors">
+                                <p class="font-medium text-gray-800 dark:text-gray-200">
+                                    "Teknologi yang baik adalah yang tidak terlihat, namun dampaknya langsung terasa pada pertumbuhan dan efisiensi bisnis Anda."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proyek Unggulan (Redesigned) -->
+        <section id="proyek" class="py-24 bg-gray-50 dark:bg-darkBg relative transition-colors duration-300 border-t border-gray-200 dark:border-purple-900/20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
+                    <div class="max-w-2xl">
+                        <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">Proyek <span class="text-purple-600 dark:text-purple-500">Unggulan</span></h2>
+                        <p class="text-gray-600 dark:text-gray-400 text-lg">Portfolio karya nyata yang didesain khusus untuk menyelesaikan masalah operasional dan meningkatkan efisiensi perusahaan.</p>
+                    </div>
+                    <div class="mt-6 md:mt-0">
+                        <a href="https://github.com/BINTANGDWIANGGARA" target="_blank" aria-label="Lihat Semua Proyek" class="text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 flex items-center gap-2 font-bold transition group bg-purple-100 dark:bg-purple-900/30 px-6 py-3 rounded-full">
+                            Lihat di GitHub <i class="fab fa-github text-xl group-hover:rotate-12 transition"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-10">
+                    <!-- Project 1 -->
+                    <article class="glass-card rounded-2xl overflow-hidden group relative flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Sistem Stok Gudang" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-[#050505]/30 to-transparent"></div>
+                            
+                            <!-- Tech Badges -->
+                            <div class="absolute top-4 left-4 flex gap-2">
+                                <span class="px-3 py-1 bg-white/90 dark:bg-black/60 backdrop-blur-md text-gray-900 dark:text-white text-xs rounded-full font-bold shadow-sm">Inventory</span>
+                            </div>
+                            
+                            <div class="absolute bottom-4 left-6 flex gap-2">
+                                <span class="px-3 py-1 bg-purple-600/90 backdrop-blur-md text-white text-xs rounded-md font-medium shadow-sm"><i class="fab fa-laravel mr-1"></i> Laravel</span>
+                                <span class="px-3 py-1 bg-blue-600/90 backdrop-blur-md text-white text-xs rounded-md font-medium shadow-sm"><i class="fas fa-database mr-1"></i> MySQL</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-8 flex-1 flex flex-col bg-white dark:bg-[#0a0a0a]">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Sistem Stok Gudang</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 text-sm leading-relaxed flex-1">Aplikasi berbasis web untuk mengelola pergerakan barang secara akurat. Memudahkan pemantauan keluar masuk stok barang di gudang perusahaan secara *real-time* dan meminimalisir *human error*.</p>
+                            
+                            <div class="flex gap-4 mt-auto">
+                                <a href="#" aria-label="Live Demo Sistem Stok" class="flex-1 text-center bg-purple-600 text-white py-3 rounded-xl text-sm font-bold hover:bg-purple-700 dark:hover:bg-purple-500 shadow-md transition transform hover:-translate-y-1">Live Demo</a>
+                                <a href="#" aria-label="Detail Source Code" class="flex-1 text-center bg-gray-100 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 py-3 rounded-xl text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-800 transition transform hover:-translate-y-1">Detail</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="glass-card rounded-2xl overflow-hidden group relative flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Sistem Absensi Karyawan" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-[#050505]/30 to-transparent"></div>
+                            
+                            <div class="absolute top-4 left-4 flex gap-2">
+                                <span class="px-3 py-1 bg-white/90 dark:bg-black/60 backdrop-blur-md text-gray-900 dark:text-white text-xs rounded-full font-bold shadow-sm">HR & Management</span>
+                            </div>
+                            
+                            <div class="absolute bottom-4 left-6 flex gap-2">
+                                <span class="px-3 py-1 bg-indigo-600/90 backdrop-blur-md text-white text-xs rounded-md font-medium shadow-sm"><i class="fab fa-php mr-1"></i> PHP Native</span>
+                                <span class="px-3 py-1 bg-yellow-500/90 backdrop-blur-md text-gray-900 text-xs rounded-md font-medium shadow-sm"><i class="fab fa-js mr-1"></i> JavaScript</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-8 flex-1 flex flex-col bg-white dark:bg-[#0a0a0a]">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Sistem Absensi Digital</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 text-sm leading-relaxed flex-1">Platform pintar untuk memonitor kehadiran karyawan secara real-time. Menyederhanakan proses pencatatan, rekapitulasi, dan manajemen laporan bagi divisi HRD.</p>
+                            
+                            <div class="flex gap-4 mt-auto">
+                                <a href="#" aria-label="Live Demo Absensi" class="flex-1 text-center bg-purple-600 text-white py-3 rounded-xl text-sm font-bold hover:bg-purple-700 dark:hover:bg-purple-500 shadow-md transition transform hover:-translate-y-1">Live Demo</a>
+                                <a href="#" aria-label="Detail Source Code" class="flex-1 text-center bg-gray-100 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 py-3 rounded-xl text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-800 transition transform hover:-translate-y-1">Detail</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3 -->
+                    <article class="glass-card rounded-2xl overflow-hidden group relative flex flex-col" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Sistem Keuangan dan Laporan" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-[#050505]/30 to-transparent"></div>
+                            
+                            <div class="absolute top-4 left-4 flex gap-2">
+                                <span class="px-3 py-1 bg-white/90 dark:bg-black/60 backdrop-blur-md text-gray-900 dark:text-white text-xs rounded-full font-bold shadow-sm">Finance</span>
+                            </div>
+                            
+                            <div class="absolute bottom-4 left-6 flex gap-2">
+                                <span class="px-3 py-1 bg-purple-600/90 backdrop-blur-md text-white text-xs rounded-md font-medium shadow-sm"><i class="fab fa-laravel mr-1"></i> Laravel</span>
+                                <span class="px-3 py-1 bg-green-600/90 backdrop-blur-md text-white text-xs rounded-md font-medium shadow-sm"><i class="fas fa-file-excel mr-1"></i> Excel Export</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-8 flex-1 flex flex-col bg-white dark:bg-[#0a0a0a]">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Dashboard Keuangan & Laporan</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 text-sm leading-relaxed flex-1">Sistem komprehensif yang membantu pencatatan arus kas secara presisi, terintegrasi dengan pembuat laporan otomatis untuk memfasilitasi pengambilan keputusan strategis pimpinan.</p>
+                            
+                            <div class="flex gap-4 mt-auto">
+                                <a href="#" class="flex-1 text-center bg-purple-600 text-white py-3 rounded-xl text-sm font-bold hover:bg-purple-700 dark:hover:bg-purple-500 shadow-md transition transform hover:-translate-y-1">Live Demo</a>
+                                <a href="#" class="flex-1 text-center bg-gray-100 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 py-3 rounded-xl text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-800 transition transform hover:-translate-y-1">Detail</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4 -->
+                    <article class="glass-card rounded-2xl overflow-hidden group relative flex flex-col" data-aos="fade-up" data-aos-delay="400">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Sistem Sales Order" loading="lazy" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-[#050505]/30 to-transparent"></div>
+                            
+                            <div class="absolute top-4 left-4 flex gap-2">
+                                <span class="px-3 py-1 bg-white/90 dark:bg-black/60 backdrop-blur-md text-gray-900 dark:text-white text-xs rounded-full font-bold shadow-sm">E-Commerce B2B</span>
+                            </div>
+                            
+                            <div class="absolute bottom-4 left-6 flex gap-2">
+                                <span class="px-3 py-1 bg-indigo-600/90 backdrop-blur-md text-white text-xs rounded-md font-medium shadow-sm"><i class="fab fa-php mr-1"></i> PHP</span>
+                                <span class="px-3 py-1 bg-orange-600/90 backdrop-blur-md text-white text-xs rounded-md font-medium shadow-sm"><i class="fas fa-shopping-cart mr-1"></i> Sales API</span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-8 flex-1 flex flex-col bg-white dark:bg-[#0a0a0a]">
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition">Sistem Sales Order Tersentralisasi</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 text-sm leading-relaxed flex-1">Platform B2B untuk mengelola pesanan penjualan. Membantu tim sales mempercepat proses transaksi, memonitor status order, dan mengorganisir data pelanggan di satu tempat.</p>
+                            
+                            <div class="flex gap-4 mt-auto">
+                                <a href="#" class="flex-1 text-center bg-purple-600 text-white py-3 rounded-xl text-sm font-bold hover:bg-purple-700 dark:hover:bg-purple-500 shadow-md transition transform hover:-translate-y-1">Live Demo</a>
+                                <a href="#" class="flex-1 text-center bg-gray-100 dark:bg-[#1a1a1a] text-gray-700 dark:text-gray-300 py-3 rounded-xl text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-800 transition transform hover:-translate-y-1">Detail</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimoni Pelanggan -->
+        <section id="testimoni" class="py-24 bg-white dark:bg-darkCard border-y border-gray-200 dark:border-purple-900/20 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                    <span class="px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 text-sm font-bold tracking-widest uppercase mb-6 inline-block">Testimoni</span>
+                    <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Apa Kata <span class="text-purple-600 dark:text-purple-500">Klien</span></h2>
+                    <p class="text-gray-600 dark:text-gray-400">Kepercayaan dan kepuasan pengguna adalah ukuran keberhasilan dari setiap baris kode yang saya tulis.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Testi 1 -->
+                    <div class="glass-card rounded-2xl p-8 relative hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-quote-right text-5xl text-purple-100 dark:text-purple-900/40 absolute top-6 right-6"></i>
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="https://ui-avatars.com/api/?name=Bapak+Hasan&background=6b21a8&color=fff" alt="Client 1" loading="lazy" class="w-14 h-14 rounded-full shadow-md border-2 border-white dark:border-[#111]">
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Bpk. Hasan</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Manager Operasional</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed italic">"Sistem stok gudang yang dibangun oleh Bintang sangat intuitif. Error pencatatan manual kami turun drastis, dan efisiensi operasional harian kami meningkat signifikan sejak bulan pertama."</p>
+                        <div class="mt-6 text-yellow-400 text-sm flex gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+
+                    <!-- Testi 2 -->
+                    <div class="glass-card rounded-2xl p-8 relative hover:-translate-y-2 transition-transform duration-300 bg-purple-50 dark:bg-[#111]" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-quote-right text-5xl text-purple-200 dark:text-purple-900/40 absolute top-6 right-6"></i>
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="https://ui-avatars.com/api/?name=Ibu+Diana&background=a855f7&color=fff" alt="Client 2" loading="lazy" class="w-14 h-14 rounded-full shadow-md border-2 border-white dark:border-[#111]">
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Ibu Diana</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Kepala Divisi HRD</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed italic">"Aplikasi absensi ini memudahkan saya melakukan rekapitulasi akhir bulan. UI/UX-nya bersih dan mudah dimengerti bahkan oleh karyawan yang tidak terlalu paham teknologi."</p>
+                        <div class="mt-6 text-yellow-400 text-sm flex gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+
+                    <!-- Testi 3 -->
+                    <div class="glass-card rounded-2xl p-8 relative hover:-translate-y-2 transition-transform duration-300" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-quote-right text-5xl text-purple-100 dark:text-purple-900/40 absolute top-6 right-6"></i>
+                        <div class="flex items-center gap-4 mb-6">
+                            <img src="https://ui-avatars.com/api/?name=Andi+W&background=3b82f6&color=fff" alt="Client 3" loading="lazy" class="w-14 h-14 rounded-full shadow-md border-2 border-white dark:border-[#111]">
+                            <div>
+                                <h4 class="font-bold text-gray-900 dark:text-white">Andi W.</h4>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Direktur Keuangan</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed italic">"Modul ekspor laporan Excel dan dashboard analisis keuangannya sangat rapi. Bintang benar-benar paham bagaimana menerjemahkan alur bisnis yang rumit ke dalam sistem yang *scalable*."</p>
+                        <div class="mt-6 text-yellow-400 text-sm flex gap-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="kontak" class="py-24 bg-gray-50 dark:bg-darkBg relative transition-colors duration-300">
+            <div class="absolute right-0 bottom-0 w-[600px] h-[600px] bg-purple-200/50 dark:bg-purple-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+            
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                    
+                    <!-- Contact Info (Left) -->
+                    <div data-aos="fade-right" class="sticky top-28">
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Mari Ciptakan <br><span class="text-purple-600 dark:text-purple-500">Sesuatu yang Hebat!</span></h2>
+                        <p class="text-gray-600 dark:text-gray-400 mb-10 text-lg leading-relaxed">
+                            Apakah Anda memiliki ide proyek, pertanyaan, atau sekadar ingin berdiskusi tentang teknologi dan bisnis? Jangan ragu untuk menghubungi saya.
+                        </p>
+                        
+                        <div class="space-y-6 mb-12">
+                            <a href="mailto:bintangdwianggara9@gmail.com" aria-label="Kirim Email" class="flex items-center gap-6 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition group p-4 rounded-2xl bg-white dark:bg-[#111] shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-800">
+                                <div class="w-14 h-14 bg-purple-50 dark:bg-purple-900/20 rounded-full flex items-center justify-center text-purple-600 dark:text-purple-400 transition-colors">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">Email Langsung</p>
+                                    <span class="font-bold text-lg">bintangdwianggara9@gmail.com</span>
+                                </div>
+                            </a>
+                            
+                            <a href="https://wa.me/6281315379958" target="_blank" aria-label="Chat WhatsApp" class="flex items-center gap-6 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition group p-4 rounded-2xl bg-white dark:bg-[#111] shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-800">
+                                <div class="w-14 h-14 bg-green-50 dark:bg-green-900/20 rounded-full flex items-center justify-center text-green-600 dark:text-green-400 transition-colors">
+                                    <i class="fab fa-whatsapp text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500 font-medium uppercase tracking-wider mb-1">WhatsApp</p>
+                                    <span class="font-bold text-lg">0813 1537 9958</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form (Right) -->
+                    <div data-aos="fade-left">
+                        <form class="glass-card rounded-3xl p-8 md:p-10 shadow-xl dark:shadow-[0_10px_40px_-15px_rgba(168,85,247,0.3)] border border-gray-200 dark:border-purple-500/20 relative overflow-hidden">
+                            <!-- Decor -->
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-purple-500/20 to-transparent rounded-bl-full"></div>
+                            
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2 relative z-10">Kirim Pesan</h3>
+                            <p class="text-gray-500 dark:text-gray-400 mb-8 text-sm relative z-10">Saya akan membalas pesan Anda secepatnya.</p>
+                            
+                            <div class="space-y-6 relative z-10">
+                                <div>
+                                    <label for="name" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Nama Lengkap</label>
+                                    <input type="text" id="name" required class="w-full px-5 py-4 rounded-xl bg-gray-50 dark:bg-[#0a0a0a] border border-gray-200 dark:border-gray-800 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-900/50 outline-none text-gray-900 dark:text-white transition shadow-inner" placeholder="Cth: John Doe">
+                                </div>
+                                
+                                <div>
+                                    <label for="email" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                                    <input type="email" id="email" required class="w-full px-5 py-4 rounded-xl bg-gray-50 dark:bg-[#0a0a0a] border border-gray-200 dark:border-gray-800 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-900/50 outline-none text-gray-900 dark:text-white transition shadow-inner" placeholder="Cth: john@perusahaan.com">
+                                </div>
+                                
+                                <div>
+                                    <label for="message" class="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Pesan atau Kebutuhan Proyek</label>
+                                    <textarea id="message" rows="5" required class="w-full px-5 py-4 rounded-xl bg-gray-50 dark:bg-[#0a0a0a] border border-gray-200 dark:border-gray-800 focus:border-purple-500 dark:focus:border-purple-500 focus:ring-2 focus:ring-purple-200 dark:focus:ring-purple-900/50 outline-none text-gray-900 dark:text-white transition shadow-inner resize-none" placeholder="Ceritakan detail proyek, masalah bisnis yang ingin diselesaikan, atau target yang ingin dicapai..."></textarea>
+                                </div>
+                                
+                                <div class="grid grid-cols-2 gap-4">
+                                    <button type="button" id="btn-wa" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-4 px-4 rounded-xl shadow-[0_10px_20px_-10px_rgba(34,197,94,0.6)] hover:shadow-[0_15px_25px_-10px_rgba(34,197,94,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
+                                        <i class="fab fa-whatsapp text-lg"></i>
+                                        <span>Kirim via WA</span>
+                                    </button>
+                                    
+                                    <button type="button" id="btn-email" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-4 px-4 rounded-xl shadow-[0_10px_20px_-10px_rgba(168,85,247,0.6)] hover:shadow-[0_15px_25px_-10px_rgba(168,85,247,0.8)] transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2 group">
+                                        <i class="fas fa-envelope text-lg"></i>
+                                        <span>Kirim via Email</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-darkCard py-12 border-t border-gray-200 dark:border-purple-900/30 text-center relative overflow-hidden transition-colors duration-300">
+        <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[400px] h-[100px] bg-purple-400/10 dark:bg-purple-600/20 blur-[80px]"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <a href="#" aria-label="Back to Top" class="font-bold text-3xl tracking-tight text-gray-900 dark:text-white mb-6 inline-block">Bintang<span class="text-purple-600 dark:text-purple-500">.</span></a>
+            
+            <!-- Social Links -->
+            <div class="flex justify-center gap-6 mb-10">
+                <a href="https://github.com/BINTANGDWIANGGARA" aria-label="GitHub" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-[#111] flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-purple-600 hover:text-white dark:hover:bg-purple-600 dark:hover:text-white transition transform hover:scale-110 shadow-sm"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://linkedin.com" aria-label="LinkedIn" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-[#111] flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition transform hover:scale-110 shadow-sm"><i class="fab fa-linkedin-in text-xl"></i></a>
+                <a href="mailto:bintangdwianggara9@gmail.com" aria-label="Email" class="w-12 h-12 rounded-full bg-gray-100 dark:bg-[#111] flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white transition transform hover:scale-110 shadow-sm"><i class="fas fa-envelope text-xl"></i></a>
+            </div>
+            
+            <p class="text-gray-500 dark:text-gray-600 text-sm font-medium">&copy; 2026 Bintang Dwi Anggara. Portfolio. <br> <span class="text-purple-600/80 dark:text-purple-900/80 font-bold mt-2 inline-block">Built with precision.</span></p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // --- 1. Dark Mode Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        // Cek Local Storage atau System Preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        // Toggle Event
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            
+            if (html.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+                themeToggle.style.transform = "rotate(360deg)";
+            } else {
+                localStorage.theme = 'light';
+                themeToggle.style.transform = "rotate(-360deg)";
+            }
+        });
+
+        // --- 2. AOS Initialization ---
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50,
+        });
+
+        // --- 3. Custom Cursor Interaction ---
+        if (window.matchMedia("(pointer: fine)").matches) {
+            window.addEventListener('mousemove', function(e) {
+                const posX = e.clientX;
+                const posY = e.clientY;
+
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            // Interactive Elements Hover
+            const clickables = document.querySelectorAll('a, button, input, textarea, .glass-card, .tilt-element');
+            clickables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursorOutline.style.width = '60px';
+                    cursorOutline.style.height = '60px';
+                    cursorOutline.style.backgroundColor = 'rgba(168, 85, 247, 0.15)';
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursorOutline.style.width = '40px';
+                    cursorOutline.style.height = '40px';
+                    cursorOutline.style.backgroundColor = 'transparent';
+                    cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
+                });
+            });
+        }
+        
+        // --- 4. Form Submit Integration (WA & Email) ---
+        const btnWA = document.getElementById('btn-wa');
+        const btnEmail = document.getElementById('btn-email');
+        const contactForm = document.querySelector('form');
+
+        // Fungsi untuk mengambil data form
+        const getFormData = () => {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if(!name || !email || !message) {
+                alert('Mohon lengkapi semua kolom form terlebih dahulu.');
+                return null;
+            }
+            return { name, email, message };
+        };
+
+        // Kirim via WhatsApp
+        if(btnWA) {
+            btnWA.addEventListener('click', () => {
+                const data = getFormData();
+                if(!data) return;
+
+                const phoneNumber = '6281315379958'; // Nomor WA Anda
+                const textWA = `Halo Bintang Dwi Anggara,%0A%0APerkenalkan saya *${data.name}*.%0AEmail saya: ${data.email}%0A%0ASaya ingin mendiskusikan hal berikut:%0A"${data.message}"%0A%0ATerima kasih.`;
+                
+                const waUrl = `https://wa.me/${phoneNumber}?text=${textWA}`;
+                window.open(waUrl, '_blank');
+            });
+        }
+
+        // Kirim via Email
+        if(btnEmail) {
+            btnEmail.addEventListener('click', () => {
+                const data = getFormData();
+                if(!data) return;
+
+                const emailTo = 'bintangdwianggara9@gmail.com'; // Email Anda
+                const subject = `Pesan dari ${data.name} via Portfolio Website`;
+                const body = `Halo Bintang Dwi Anggara,%0D%0A%0D%0APerkenalkan saya ${data.name}.%0D%0AEmail: ${data.email}%0D%0A%0D%0ASaya ingin mendiskusikan hal berikut:%0D%0A"${data.message}"%0D%0A%0D%0ATerima kasih.`;
+                
+                const mailtoUrl = `mailto:${emailTo}?subject=${subject}&body=${body}`;
+                window.location.href = mailtoUrl;
+            });
+        }
+
+        // Mencegah form reload page
+        if(contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+            });
+        }
+    </script>
+</body>
+</html>
